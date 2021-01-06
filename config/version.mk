@@ -1,4 +1,4 @@
-# Copyright (C) 2016-2020 AOSiP
+# Copyright (C) 2016-2020 Falcon OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,20 +19,20 @@ else
     BUILD_DATE := $(shell date +%Y%m%d)
 endif
 
-TARGET_PRODUCT_SHORT := $(subst aosip_,,$(AOSIP_BUILDTYPE))
+TARGET_PRODUCT_SHORT := $(subst falcon_,,$(FALCON_BUILDTYPE))
 
-AOSIP_BUILDTYPE ?= Ravioli
+FALCON_BUILDTYPE ?= Skyline-1.0 ❤️
 AOSIP_BUILD_VERSION := $(PLATFORM_VERSION)
-AOSIP_VERSION := $(AOSIP_BUILD_VERSION)-$(AOSIP_BUILDTYPE)-$(AOSIP_BUILD)-$(BUILD_DATE)
-ROM_FINGERPRINT := AOSiP/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(shell date -u +%H%M)
+FALCON_VERSION := $(AOSIP_BUILD_VERSION)-$(FALCON_BUILDTYPE)-$(BUILD_DATE)
+ROM_FINGERPRINT := FAlcoN/$(PLATFORM_VERSION)/$(FALCON_BUILDTYPE)/$(shell date -u +%H%M)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.aosip.build.version=$(AOSIP_BUILD_VERSION) \
   ro.aosip.build.date=$(BUILD_DATE) \
-  ro.aosip.buildtype=$(AOSIP_BUILDTYPE) \
+  ro.aosip.buildtype=$(FALCON_BUILDTYPE) \
   ro.aosip.fingerprint=$(ROM_FINGERPRINT) \
-  ro.aosip.version=$(AOSIP_VERSION) \
-  ro.aosip.device=$(AOSIP_BUILD) \
+  ro.aosip.version=$(FALCON_VERSION) \
+  ro.aosip.device=$(FALCON_BUILD) \
   ro.modversion=$(AOSIP_VERSION)
 
 ifneq ($(OVERRIDE_OTA_CHANNEL),)
