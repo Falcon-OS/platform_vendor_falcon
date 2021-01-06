@@ -19,6 +19,18 @@ else
     BUILD_DATE := $(shell date +%Y%m%d)
 endif
 
+ifeq ($(FALCON_BUILDTYPE), OFFICIAL)
+   LIST = $(shell cat vendor/aosip/falcon.devices)
+    ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
+      IS_OFFICIAL=true
+
+    endif
+    ifneq ($(IS_OFFICIAL), true)
+       $(error Device is not official "$(CURRENT_DEVICE)")
+    endif
+endif
+
+
 TARGET_PRODUCT_SHORT := $(subst falcon_,,$(FALCON_BUILDTYPE))
 
 FALCON_BUILDTYPE ?= Skyline-1.0 ❤️
