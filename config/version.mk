@@ -19,24 +19,28 @@ else
     BUILD_DATE := $(shell date +%Y%m%d)
 endif
 
-ifeq ($(FALCON_BUILDTYPE), OFFICIAL)
+# OFFICIAL DEVICES
+
+ifeq ($(FALCON_BUILDVERSION), OFFICIAL)
    LIST = $(shell cat vendor/aosip/falcon.devices)
     ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
       IS_OFFICIAL=true
+        FALCON_BUILDVERSION := OFFICIAL
 
     endif
     ifneq ($(IS_OFFICIAL), true)
+    FALCON_BUILDVERSION := Unofficial
        $(error Device is not official "$(CURRENT_DEVICE)")
     endif
 endif
 
 
 TARGET_PRODUCT_SHORT := $(subst falcon_,,$(FALCON_BUILDTYPE))
-
+FALCON_BUILDVERSION ?= Unofficial
 FALCON_BUILDTYPE ?= Skyline-1.0 ❤️
 AOSIP_BUILD_VERSION := $(PLATFORM_VERSION)
-FALCON_VERSION := $(AOSIP_BUILD_VERSION)-$(FALCON_BUILDTYPE)-$(BUILD_DATE)
-ROM_FINGERPRINT := FAlcoN/$(PLATFORM_VERSION)/$(FALCON_BUILDTYPE)/$(shell date -u +%H%M)
+FALCON_VERSION := $(AOSIP_BUILD_VERSION)-$(FALCON_BUILDTYPE)-$(FALCON_BUILDVERSION)-$(BUILD_DATE)
+ROM_FINGERPRINT := FAlcoN/$(PLATFORM_VERSION)/$(FALCON_BUILDTYPE)/$(FALCON_BUILDVERSION)/$(shell date -u +%H%M)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.aosip.build.version=$(AOSIP_BUILD_VERSION) \
