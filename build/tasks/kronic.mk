@@ -9,7 +9,6 @@ fly: otapackage
 	@echo -e ""
 	@echo -e "${cya}Building ${bldcya}FAlcoN ${txtrst}";
 	@echo -e ""
-	@echo -e ${CL_GRN}"
 	@echo -e ${CL_GRN}"  ________            __                                       ______    _____ _   "
 	@echo -e ${CL_GRN}" /        |          /  |                                     /      \  /      \   "
 	@echo -e ${CL_GRN}" $$$$$$$$/   ______  $$ |  _______   ______   _______        /$$$$$$  |/$$$$$$  |  "
@@ -25,7 +24,7 @@ fly: otapackage
 	@echo -e "size:`ls -lah $(FALCON_TARGET_PACKAGE) | cut -d ' ' -f 5`"
 	@echo -e ""
 	@echo -e ${CL_GRN}"============================="
-	@echo -e ${CL_GRN}"      Fly Like A Falcon ❤️    "
+	@echo -e ${CL_GRN}"      Fly Like A Falcon      "
 	@echo -e ${CL_GRN}"        BY- TEAM FALCON	"
 	@echo -e ${CL_GRN}"============================="
 	@echo -e ""
